@@ -1,8 +1,8 @@
-import { getUnpackedSettings } from "http2";
+import BasePage from './basePage';
 
-class ContactUsPage {
+class ContactUsPage extends BasePage {
     constructor(page) {
-        this.page = page
+        super(page);
     }
 
     locators = {
@@ -22,6 +22,7 @@ class ContactUsPage {
         await this.locators.getInputFieldEmail().fill(email);
         return this;  
     }
+
     async fillMessageField(message) {
         await this.locators.getInputFieldMessage().fill(message);
         return this;  
@@ -32,10 +33,18 @@ class ContactUsPage {
     }
 
     async clickSubmitButton() {
-        this.locators.getSubmitButton().click();
+        await this.locators.getSubmitButton().click();
+        return this;
+    }
+
+    async submitContactForm(name, email, message) {
+        await this.fillNameField(name);
+        await this.fillEmailField(email);
+        await this.fillMessageField(message);
+        await this.acceptConfirmationPopup();
+        await this.clickSubmitButton();
         return this;
     }
 }
-  
 
-export default ContactUsPage
+export default ContactUsPage;

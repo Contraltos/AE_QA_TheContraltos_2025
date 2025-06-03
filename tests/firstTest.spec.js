@@ -1,42 +1,39 @@
 import { test, expect } from "@playwright/test";
+import ContactUsPage from '../POM/pageObjects/contactUsPage';
 
-test.describe("first test suite", () => {
+test.describe("Automation Exercise Website Tests", () => {
     test.beforeEach(async ({ page }) => {
         await page.goto("/");
     });
 
-    test("verify home page", async  ({ page }) => { 
-        //it()
-        // const locator = page.locator(".navbar-nav a[href='/']");
-        const locator = page.getByText("Home"); 
-
+    test("should verify home page navigation link color", async ({ page }) => {
+        const locator = page.getByText("Home");
         await expect(locator).toHaveCSS("color", "rgb(255, 165, 0)");
     });
 
-    test("verify contact us form submission", async ({ page }) => {
+    test("should successfully submit contact form", async ({ page }) => {
+        const contactPage = new ContactUsPage(page);
+        
         await page.getByText("Contact us").click();
+        await contactPage.submitContactForm(
+            "my name",
+            "myemail@email.com",
+            "here is my message"
+        );
 
-        await page.getByPlaceholder("Name").fill("my name"); 
-        await page.locator("input[data-qa='email']").fill("myemail@email.com");
-        await page.locator("#message").fill("here is my message");
-
-        page.on("dialog", async (alert) => await alert.accept());
-        await page.locator("input[data-qa='submit-button']").click();  //диалоговое окно 
-
-        const divText = page.locator(".contact-form .status") 
-        await expect(divText).toBeVisible();
-        await expect(divText).toHaveText(
-            "Success! Your details have been submitted successfully."  //результат ответа 
+        const successMessage = contactPage.locators.getSuccessSubmissionMessage();
+        await expect(successMessage).toBeVisible();
+        await expect(successMessage).toHaveText(
+            "Success! Your details have been submitted successfully."
         );
     });
 
-    test("verify categories on products page", async ({ page }) => {
-        const result = ["WOMEN", "MEN", "KIDS"];
+    test("should display correct product categories", async ({ page }) => {
+        const expectedCategories = ["WOMEN", "MEN", "KIDS"];
 
         await page.getByText("Products").click();
+        const categories = await page.locator("[data-parent='#accordian']").allInnerTexts();
 
-        const data = await page.locator("[data-parent='#accordian']").allInnerTexts(); 
-
-        expect(data).toEqual(result);
-     });   
+        expect(categories).toEqual(expectedCategories);
+    });
 });
