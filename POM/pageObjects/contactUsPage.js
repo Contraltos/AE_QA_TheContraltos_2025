@@ -15,21 +15,22 @@ class ContactUsPage extends BasePage {
 
     async fillNameField(name) {
         await this.locators.getInputFieldName().fill(name);
-        return this;  
+        return this;
     }
 
     async fillEmailField(email) {
         await this.locators.getInputFieldEmail().fill(email);
-        return this;  
+        return this;
     }
 
     async fillMessageField(message) {
         await this.locators.getInputFieldMessage().fill(message);
-        return this;  
+        return this;
     }
     
     async acceptConfirmationPopup() {
         this.page.on("dialog", async (alert) => await alert.accept());
+        return this;
     }
 
     async clickSubmitButton() {
@@ -38,12 +39,12 @@ class ContactUsPage extends BasePage {
     }
 
     async submitContactForm(name, email, message) {
-        await this.fillNameField(name);
-        await this.fillEmailField(email);
-        await this.fillMessageField(message);
-        await this.acceptConfirmationPopup();
-        await this.clickSubmitButton();
-        return this;
+        return this
+            .fillNameField(name)
+            .fillEmailField(email)
+            .fillMessageField(message)
+            .acceptConfirmationPopup()
+            .clickSubmitButton();
     }
 }
 

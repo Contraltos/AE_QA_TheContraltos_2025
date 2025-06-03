@@ -15,11 +15,12 @@ test.describe("contact us page test", () => {
         header.clickContactUsLink();  //переход на страницу Contact us
 
         const contactUsPage = new ContactUsPage(page);
-        await contactUsPage.fillNameField(contactUsData.name);  //заполнение формы
-        await contactUsPage.fillEmailField(contactUsData.email);
-        await contactUsPage.fillMessageField(contactUsData.message);
-        await contactUsPage.acceptConfirmationPopup();
-        await contactUsPage.clickSubmitButton();  //отправка формы
+        await contactUsPage
+            .fillNameField(contactUsData.name)
+            .fillEmailField(contactUsData.email)
+            .fillMessageField(contactUsData.message)
+            .acceptConfirmationPopup()
+            .clickSubmitButton();  //отправка формы
 
         const divText = contactUsPage.locators.getSuccessSubmissionMessage();  //проверка ответа
         await expect(divText).toBeVisible();
