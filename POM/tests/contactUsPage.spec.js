@@ -8,6 +8,7 @@ test.describe("contact us page test", () => {
     test.beforeEach(async ({ page }) => {
         const homePage = new HomePage(page);
         await homePage.loadHomePage();
+        await homePage.handleCookies();
     });
 
     test("verify contact us form submission", async ({ page }) => {
@@ -21,7 +22,8 @@ test.describe("contact us page test", () => {
         await contactUsPage.acceptConfirmationPopup();
         await contactUsPage.clickSubmitButton();  //отправка формы
 
-        const divText = contactUsPage.locators.getSuccessSubmissionMessage();  //проверка ответа
+        const divText = contactUsPage.locators.getSuccessSubmissionMessage(); 
+        await divText.waitFor({ state: 'visible' }); // ждём появления локатора
         await expect(divText).toBeVisible();
         await expect(divText).toHaveText(contactUsData.successSubmissionMessage);
     });
