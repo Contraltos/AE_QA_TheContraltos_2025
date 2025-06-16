@@ -1,5 +1,7 @@
 import { test } from "../helpers/fixtures";
 import { expect } from "@playwright/test";
+import Header from "../pageObjects/header";
+import ContactUsPage from "../pageObjects/contactUsPage";
 import { contactUsData } from "../helpers/testData";
 
 test.describe("contact us page test", () => {
