@@ -2,6 +2,7 @@ import { test as base } from '@playwright/test';
 import HomePage from "../pageObjects/homePage";
 import Header from '../pageObjects/header.js';
 import SignupLoginPage from '../pageObjects/signupLoginPage.js';
+import TestCasesPage from '../pageObjects/testCasesPage.js';
 
 export const test = base.extend({
   homePage: async ({ page }, use) => {
@@ -18,5 +19,10 @@ export const test = base.extend({
     await header.clickSignupLoginLink();
     const signupLoginPage = new SignupLoginPage(page);
     await use(signupLoginPage);
+  },
+  testCasesPage: async ({ page }, use) => {
+    const testCasesPage = new TestCasesPage(page);
+    await use(testCasesPage);
+    
   }
 });
