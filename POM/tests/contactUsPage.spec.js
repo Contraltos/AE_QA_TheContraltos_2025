@@ -1,15 +1,10 @@
-import { test, expect } from "@playwright/test";
-import HomePage from "../pageObjects/homePage";
+import { test } from "../helpers/fixtures";
+import { expect } from "@playwright/test";
 import Header from "../pageObjects/header";
 import ContactUsPage from "../pageObjects/contactUsPage";
 import { contactUsData } from "../helpers/testData";
 
 test.describe("contact us page test", () => {
-    test.beforeEach(async ({ page }) => {
-        const homePage = new HomePage(page);
-        await homePage.loadHomePage();
-        await homePage.handleCookies();
-    });
 
     test("verify contact us form submission", async ({ page }) => {
         const header = new Header(page);  //загрузка домашней страницы
