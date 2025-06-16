@@ -6,11 +6,9 @@ import { contactUsData } from "../helpers/testData";
 
 test.describe("contact us page test", () => {
 
-    test("verify contact us form submission", async ({ page }) => {
-        const header = new Header(page);  //загрузка домашней страницы
-        header.clickContactUsLink();  //переход на страницу Contact us
+    test("verify contact us form submission", async ({ header, contactUsPage }) => {
+        await header.clickContactUsLink();  //переход на страницу Contact us
 
-        const contactUsPage = new ContactUsPage(page);
         await contactUsPage.fillNameField(contactUsData.name);  //заполнение формы
         await contactUsPage.fillEmailField(contactUsData.email);
         await contactUsPage.fillMessageField(contactUsData.message);

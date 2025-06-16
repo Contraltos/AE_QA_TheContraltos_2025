@@ -5,11 +5,8 @@ import ProductsPage from '../pageObjects/productsPage';
 
 test.describe('search products test', () => {
 
-    test('verify search field on the product page', async ({ page }) => {
-        const header = new Header(page);
+    test('verify search field on the product page', async ({ header, productsPage }) => {
         await header.clickProductsLink(); 
-
-        const productsPage = new ProductsPage(page);
         await productsPage.searchProduct('dress');
 
         const searchedTitle = await productsPage.shouldSearchedProductsVisible();

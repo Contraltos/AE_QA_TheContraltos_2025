@@ -6,13 +6,9 @@ import { arrCategories } from "../helpers/testData";
 
 test.describe("products page test", () => {
 
-    test("verify product categories", async  ({ page }) => { 
-        const header = new Header(page); 
-        await header.clickProductsLink();  // переход на страницу Products
-
-        const productsPage = new ProductsPage(page)
+    test("verify product categories", async ({ header, productsPage }) => { 
+        await header.clickProductsLink();
         const data = await productsPage.getCategoriesText();
-
         expect(data).toEqual(arrCategories);
-     });   
+    });   
 });
