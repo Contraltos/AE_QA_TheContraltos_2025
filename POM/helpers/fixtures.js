@@ -23,6 +23,16 @@ export const test = base.extend({
   testCasesPage: async ({ page }, use) => {
     const testCasesPage = new TestCasesPage(page);
     await use(testCasesPage);
-    
+  },
+
+  contactUsPage: async ({ page }, use) => {
+    const contactUsPage = new СontactUsPage(page);
+    await use(contactUsPage);
+  },
+
+  productsPage: async ({ page }, use) => {
+    const productsPage = new ProductsPage(page);
+    await use(productsPage);
   }
+
 });

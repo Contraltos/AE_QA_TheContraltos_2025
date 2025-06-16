@@ -1,19 +1,10 @@
-import { test, expect } from '@playwright/test';
-import HomePage from '../pageObjects/homePage';
-import Header from '../pageObjects/header';
-import ProductsPage from '../pageObjects/productsPage';
+import { expect } from '@playwright/test';
+import { test } from "../helpers/fixtures";
 
 test.describe('add products to cart test', () => {
-    test.beforeEach(async ({ page }) => {
-        const homePage = new HomePage(page);
-        await homePage.loadHomePage();
-    });
 
-    test('verify add products to cart process', async ({ page }) => {
-        const header = new Header(page);
+    test('verify add products to cart process', async ({ header, productsPage }) => {
         await header.clickProductsLink();
-
-        const productsPage = new ProductsPage(page);
         await productsPage.addProductToCartByIndex(0);
         await productsPage.continueShopping();
         await productsPage.addProductToCartByIndex(1);
