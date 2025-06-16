@@ -1,12 +1,8 @@
-import { test, expect } from "@playwright/test";
-import HomePage from "../pageObjects/homePage";
+import { test } from "../helpers/fixtures";
+import { expect } from "@playwright/test";
 import Header from "../pageObjects/header";
 
 test.describe("homepage test", () => {
-    test.beforeEach(async ({ page }) => {
-        const homePage = new HomePage(page);
-        await homePage.loadHomePage();
-    });
 
     test("verify home page", async  ({ page }) => { 
         const header = new Header(page); 

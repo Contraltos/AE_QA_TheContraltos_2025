@@ -5,15 +5,14 @@ import SignupLoginPage from "./signupLoginPage.js";
 class Header {
     constructor(page) {
         this.page = page;
-    }
 
-    locators = {
+        this.locators = {
         getHomePageLink: () => this.page.getByText("Home"),
         getProductsLink: () => this.page.getByText("Products"),
         getContactUsLink: () => this.page.getByText("Contact us"),
         getSignupLoginLink: () => this.page.getByRole('link', { name: ' Signup / Login' })
+        };
     };
-
     async clickContactUsLink() {
         await this.locators.getContactUsLink().click();
         return new ContactUsPage(this.page);

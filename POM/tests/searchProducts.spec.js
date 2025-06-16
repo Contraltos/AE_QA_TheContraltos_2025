@@ -1,13 +1,9 @@
-import { test, expect } from '@playwright/test';
-import HomePage from '../pageObjects/homePage';
+import { test } from "../helpers/fixtures";
+import { expect } from '@playwright/test';
 import Header from '../pageObjects/header';
 import ProductsPage from '../pageObjects/productsPage';
 
 test.describe('search products test', () => {
-    test.beforeEach(async ({ page }) => {
-        const homePage = new HomePage(page);
-        await homePage.loadHomePage();
-    });
 
     test('verify search field on the product page', async ({ page }) => {
         const header = new Header(page);
