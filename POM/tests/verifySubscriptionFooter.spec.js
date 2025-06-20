@@ -1,7 +1,7 @@
 import { test } from "../helpers/fixtures";
 import { expect } from '@playwright/test';
 
-test.describe("verify subscription on home page", () => {
+test.describe("verify subscription in home page", () => {
   test("should subscribe successfully from homepage footer", async ({ homePage }) => {
     await homePage.verifyHomePageVisible();
     await homePage.verifyHomePageText();
