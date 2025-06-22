@@ -11,4 +11,12 @@ test.describe("Log in /Log out", () => {
                 await expect(signupLoginPage.locators.getLoggedInText(signupLoginPageData.username))
                 .toBeVisible();
         });
+
+        test("TC_003_01 - Login User with incorrect email and password", async  ({signupLoginPage}) => { 
+                await signupLoginPage.fillEmail(signupLoginPageData.incorrectEmail);
+                await signupLoginPage.fillPassword(signupLoginPageData.incorrectPassword);
+                await signupLoginPage.clickLoginButton();
+                await expect (signupLoginPage.locators.getErrorMessage()).toBeVisible();
+                
+        });
 });   

@@ -6,7 +6,8 @@ class SignupLoginPage {
         getEmailField: () => this.page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address'),
         getPasswordField: () => this.page.getByRole('textbox', { name: 'Password' }),
         getLoginButton: () => this.page.getByRole('button', { name: 'Login' }),
-        getLoggedInText: (username) => this.page.getByText(`Logged in as ${username}`)
+        getLoggedInText: (username) => this.page.getByText(`Logged in as ${username}`),
+        getErrorMessage: () => this.page.getByText('Your email or password is incorrect!'),
         }
     }
 
