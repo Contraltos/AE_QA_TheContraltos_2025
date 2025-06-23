@@ -3,6 +3,8 @@ import HomePage from "../pageObjects/homePage";
 import Header from '../pageObjects/header.js';
 import SignupLoginPage from '../pageObjects/signupLoginPage.js';
 import TestCasesPage from '../pageObjects/testCasesPage.js';
+import СontactUsPage from '../pageObjects/contactUsPage.js';
+import ProductsPage from '../pageObjects/productsPage.js';
 
 export const test = base.extend({
   homePage: async ({ page }, use) => {
