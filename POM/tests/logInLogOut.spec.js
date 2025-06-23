@@ -19,4 +19,13 @@ test.describe("Log in /Log out", () => {
                 await expect (signupLoginPage.locators.getErrorMessage()).toBeVisible();
                 
         });
-});   
+
+        test("TC_004_01 - Verify log in with correct credentials", async  ({signupLoginPage, page}) => { 
+                await signupLoginPage.fillEmail(signupLoginPageData.email);
+                await signupLoginPage.fillPassword(signupLoginPageData.password);
+                await signupLoginPage.clickLoginButton();
+                await signupLoginPage.clickLogoutButton();
+                await expect(page).toHaveURL(/.*login/);
+
+        });   
+});  

@@ -1,3 +1,5 @@
+import { get } from "http";
+
 class SignupLoginPage {
     constructor(page) {
         this.page = page;
@@ -8,6 +10,7 @@ class SignupLoginPage {
         getLoginButton: () => this.page.getByRole('button', { name: 'Login' }),
         getLoggedInText: (username) => this.page.getByText(`Logged in as ${username}`),
         getErrorMessage: () => this.page.getByText('Your email or password is incorrect!'),
+        getLogoutButton: () => this.page.getByRole('link', { name: ' Logout' })
         }
     }
 
@@ -22,6 +25,11 @@ class SignupLoginPage {
 
     async clickLoginButton(){
         await this.locators.getLoginButton().click();
+        return this;
+    }
+
+    async clickLogoutButton(){
+        await this.locators.getLogoutButton().click();
         return this;
     }
 
