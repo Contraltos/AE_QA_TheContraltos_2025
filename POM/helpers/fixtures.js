@@ -22,17 +22,17 @@ export const test = base.extend({
     const signupLoginPage = new SignupLoginPage(page);
     await use(signupLoginPage);
   },
-  testCasesPage: async ({ page }, use) => {
+  testCasesPage: async ({ page, homePage }, use) => {
     const testCasesPage = new TestCasesPage(page);
     await use(testCasesPage);
   },
 
-  contactUsPage: async ({ page }, use) => {
+  contactUsPage: async ({ page, homePage }, use) => {
     const contactUsPage = new СontactUsPage(page);
     await use(contactUsPage);
   },
 
-  productsPage: async ({ page }, use) => {
+  productsPage: async ({ page, homePage }, use) => {
     const productsPage = new ProductsPage(page);
     await use(productsPage);
   }
