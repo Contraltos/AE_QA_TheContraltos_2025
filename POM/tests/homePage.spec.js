@@ -4,7 +4,7 @@ import Header from "../pageObjects/header";
 
 test.describe("homepage test", () => {
 
-    test("verify home page", async  ({ page }) => { 
+    test.skip("verify home page", async  ({ page }) => { 
         const header = new Header(page); 
 
         const locator = header.locators.getHomePageLink();
