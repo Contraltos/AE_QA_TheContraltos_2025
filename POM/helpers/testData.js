@@ -14,3 +14,9 @@ export const signupLoginPageData = {
     incorrectEmail: "marymary.6.82@gmail",
     incorrectPassword: "12345",
 }
+
+export const subscriptionData = {
+    successMessage: "You have been successfully subscribed!",
+    generateTestEmail: () => `test${Date.now()}@example.com`
+};
+
