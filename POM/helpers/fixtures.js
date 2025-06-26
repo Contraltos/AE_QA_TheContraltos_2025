@@ -3,6 +3,7 @@ import HomePage from "../pageObjects/homePage";
 import Header from '../pageObjects/header.js';
 import SignupLoginPage from '../pageObjects/signupLoginPage.js';
 import TestCasesPage from '../pageObjects/testCasesPage.js';
+import CategoriesPage from '../pageObjects/categoriesPage';
 
 export const test = base.extend({
   homePage: async ({ page }, use) => {
@@ -11,15 +12,18 @@ export const test = base.extend({
     await homePage.handleCookies();
     await use(homePage);
   },
+
   header: async ({ page }, use) => {
     const header = new Header(page);
     await use(header);
   },
+
   signupLoginPage: async ({ page, header, homePage }, use) => {
     await header.clickSignupLoginLink();
     const signupLoginPage = new SignupLoginPage(page);
     await use(signupLoginPage);
   },
+  
   testCasesPage: async ({ page }, use) => {
     const testCasesPage = new TestCasesPage(page);
     await use(testCasesPage);
@@ -33,6 +37,10 @@ export const test = base.extend({
   productsPage: async ({ page }, use) => {
     const productsPage = new ProductsPage(page);
     await use(productsPage);
-  }
+  },
 
+  categoriesPage: async ({ page }, use) => {
+    const categoriesPage = new CategoriesPage(page);
+    await use(categoriesPage);
+  }
 });
