@@ -1,4 +1,4 @@
-import { test } from "../helpers/fixtures";
+import { test, expect } from "@playwright/test";
 import { subscriptionData } from "../helpers/testData";
 
 test.describe("verify subscription on home page", () => {
@@ -11,5 +11,9 @@ test.describe("verify subscription on home page", () => {
     const testEmail = subscriptionData.generateTestEmail();
     await homePage.subscribeWithEmail(testEmail);
     await homePage.verifySuccessSubscriptionMessage();
+
+    const successAlert = homePage.locators.successAlert;
+    await expect(successAlert).toBeVisible();
+    await expect(successAlert).toContainText("You have been successfully subscribed!");
   });
 });
