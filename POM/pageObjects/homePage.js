@@ -13,7 +13,8 @@ class HomePage {
             subscriptionText: page.locator('footer').getByText('SUBSCRIPTION'),
             emailInput: page.locator('input[type="email"]'),
             subscribeButton: page.locator('button#subscribe'),
-            successAlert: page.locator('.alert-success')
+            successAlert: page.locator('.alert-success'),
+            getViewProductLink: this.page.getByRole('link', { name: 'View Product' }).first()
         }
     };
 
@@ -59,6 +60,10 @@ class HomePage {
 
     async clickTestCasesLink() {
         await this.locators.testCasesLink.click();
+    }
+
+     async clickViewProductLink() {
+        await this.locators.getViewProductLink.click();
     }
 }
 

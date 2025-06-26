@@ -12,7 +12,7 @@ class ProductsPage {
         getAddToCartButtons: () => this.page.locator('a.add-to-cart'),
         getContinueShoppingButton: () => this.page.locator('[data-dismiss="modal"]'),
         getViewCartButton:() => this.page.locator('div.modal-content a', { hasText: 'View Cart' }),
-        getCartItems: () => this.page.locator('.cart_info tbody tr'),
+        getCartItems: () => this.page.locator('.cart_info tbody tr')
         }
     }
     async getCategoriesText() {
