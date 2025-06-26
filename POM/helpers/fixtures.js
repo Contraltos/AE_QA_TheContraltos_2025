@@ -5,6 +5,8 @@ import SignupLoginPage from '../pageObjects/signupLoginPage.js';
 import TestCasesPage from '../pageObjects/testCasesPage.js';
 import СontactUsPage from '../pageObjects/contactUsPage.js';
 import ProductsPage from '../pageObjects/productsPage.js';
+import ProductDetailsPage from '../pageObjects/productDetailsPage.js';
+import CartPage from '../pageObjects/cartPage.js';
 
 export const test = base.extend({
   homePage: async ({ page }, use) => {
@@ -35,6 +37,16 @@ export const test = base.extend({
   productsPage: async ({ page, homePage }, use) => {
     const productsPage = new ProductsPage(page);
     await use(productsPage);
+  },
+
+  productDetailsPage: async ({ page, homePage}, use) => {
+    const productDetailsPage = new ProductDetailsPage(page);
+    await use(productDetailsPage);
+  },
+
+    cartPage: async ({ page, homePage}, use) => {
+    const cartPage = new CartPage(page);
+    await use(cartPage);
   }
 
 });
