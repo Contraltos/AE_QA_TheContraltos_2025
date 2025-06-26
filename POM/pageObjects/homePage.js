@@ -48,6 +48,7 @@ class HomePage {
         await this.locators.subscribeButton.click();
         await alertPromise;
     }
+
     async verifySuccessMessage() {
         await this.locators.successAlert.waitFor({ state: 'visible' });
         await this.page.waitForSelector('.alert-success:has-text("You have been successfully subscribed!")');
