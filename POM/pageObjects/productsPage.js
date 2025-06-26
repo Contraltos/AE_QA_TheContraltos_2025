@@ -1,49 +1,49 @@
 class ProductsPage {
     constructor(page) {
         this.page = page;
+
+        this.locators = {
+        getCategories: () => this.page.locator("[data-parent='#accordian']"),
+        getSearchInput: () => this.page.locator('#search_product'),
+        getSearchButton: () => this.page.locator('#submit_search'),
+        getSearchedProductsTitle:() => this.page.locator('h2.title.text-center'),
+        getAnyProduct: () => this.page.locator('.productinfo.text-center'),
+        getProductCards: () => this.page.locator('.product-image-wrapper'),
+        getAddToCartButtons: () => this.page.locator('a.add-to-cart'),
+        getContinueShoppingButton: () => this.page.locator('[data-dismiss="modal"]'),
+        getViewCartButton:() => this.page.locator('div.modal-content a', { hasText: 'View Cart' }),
+        getCartItems: () => this.page.locator('.cart_info tbody tr'),
+        }
     }
-
-    getCategories = () => this.page.locator("[data-parent='#accordian']");
-    getSearchInput = () => this.page.locator('#search_product');
-    getSearchButton = () => this.page.locator('#submit_search');
-    getSearchedProductsTitle = () => this.page.locator('h2.title.text-center');
-    getAnyProduct = () => this.page.locator('.productinfo.text-center');
-    getProductCards = () => this.page.locator('.product-image-wrapper');
-    getAddToCartButtons = () => this.page.locator('a.add-to-cart');
-    getContinueShoppingButton = () => this.page.locator('[data-dismiss="modal"]');
-    getViewCartButton = () => this.page.locator('div.modal-content a', { hasText: 'View Cart' });
-    getCartItems = () => this.page.locator('.cart_info tbody tr');
-    
-
     async getCategoriesText() {
-        return await this.getCategories().allInnerTexts();
+        return await this.locators.getCategories().allInnerTexts();
     }
 
     async searchProduct(productName) {
-        await this.getSearchInput().fill(productName);
-        await this.getSearchButton().click();
+        await this.locators.getSearchInput().fill(productName);
+        await this.locators.getSearchButton().click();
     }
 
     async shouldSearchedProductsVisible() {
-        return await this.getSearchedProductsTitle().textContent();
+        return await this.locators.getSearchedProductsTitle().textContent();
     }
 
     async getSearchResultsCount() {
-        return await this.getAnyProduct().count();
+        return await this.locators.getAnyProduct().count();
     }
 
     async addProductToCartByIndex(index) {
-        const card = this.getProductCards().nth(index);
+        const card = this.locators.getProductCards().nth(index);
         await card.hover();
         await card.locator('.overlay-content a.add-to-cart').click();
     }
 
     async continueShopping() {
-        await this.getContinueShoppingButton().click();
+        await this.locators.getContinueShoppingButton().click();
     }
 
     async viewCart() {
-        await this.getViewCartButton().click();
+        await this.locators.getViewCartButton().click();
     }
 
     async getCartItems() {
