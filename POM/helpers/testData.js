@@ -11,4 +11,9 @@ export const signupLoginPageData = {
     email: "marymary.6.82@gmail.com",
     password: "ьфкньфкн",
     username: "Mary"
-}
+};
+
+export const subscriptionData = {
+    successMessage: "You have been successfully subscribed!",
+    generateTestEmail: () => `test${Date.now()}@example.com`
+};
