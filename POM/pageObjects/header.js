@@ -7,7 +7,7 @@ class Header {
         this.page = page;
 
         this.locators = {
-        getHomePageLink: () => this.page.getByText("Home"),
+        getHomePageLink: () => this.page.getByRole('listitem').filter({ hasText: 'Home' }),
         getProductsLink: () => this.page.getByText("Products"),
         getContactUsLink: () => this.page.getByText("Contact us"),
         getSignupLoginLink: () => this.page.getByRole('link', { name: ' Signup / Login' })
@@ -26,6 +26,10 @@ class Header {
       async clickSignupLoginLink() {
         await this.locators.getSignupLoginLink().click();
         return new SignupLoginPage(this.page);
+    }
+
+    async clickHomeLink() {
+        await this.locators.getHomePageLink().click();
     }
 }
 
