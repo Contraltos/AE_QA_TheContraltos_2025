@@ -13,7 +13,7 @@ class HomePage {
             subscriptionText: page.locator('footer').getByText('SUBSCRIPTION'),
             emailInput: page.locator('input[type="email"]'),
             subscribeButton: page.locator('button#subscribe'),
-            successAlert: page.locator('.alert-success'),
+            successAlert: page.locator('.alert-success, .alert.alert-success')
             getViewProductLink: this.page.getByRole('link', { name: 'View Product' }).first()
         }
     };
@@ -45,12 +45,24 @@ class HomePage {
 
     async subscribeWithEmail(email) {
         await this.locators.emailInput.fill(email);
+        const alertPromise = this.locators.successAlert.waitFor({ state: 'visible', timeout: 10000 });
         await this.locators.subscribeButton.click();
+        await alertPromise;
     }
 
     async verifySuccessMessage() {
         await this.locators.successAlert.waitFor({ state: 'visible' });
         await this.page.waitForSelector('.alert-success:has-text("You have been successfully subscribed!")');
+    }
+       
+    async verifySuccessSubscriptionMessage() {
+        await expect(this.locators.successAlert).toBeVisible();
+        await expect(this.locators.successAlert).toContainText("You have been successfully subscribed!");
+    }
+
+    async getSuccessSubscriptionMessageText() {
+        await this.locators.successAlert.waitFor({ state: 'visible', timeout: 10000 });
+        return await this.locators.successAlert.textContent();
     }
 
     async verifyHomePageText() {
