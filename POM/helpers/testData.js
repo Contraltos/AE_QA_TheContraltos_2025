@@ -13,6 +13,9 @@ export const signupLoginPageData = {
     username: "Mary",
     incorrectEmail: "marymary.6.82@gmail",
     incorrectPassword: "12345",
+    // Data for signup with existing email test
+    existingEmail: "marymary.6.82@gmail.com", // Using existing registered email
+    signupName: "Test User"
 }
 
 export const subscribtionData = {
