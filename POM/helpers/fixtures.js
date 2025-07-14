@@ -7,6 +7,7 @@ import СontactUsPage from '../pageObjects/contactUsPage.js';
 import ProductsPage from '../pageObjects/productsPage.js';
 import ProductDetailsPage from '../pageObjects/productDetailsPage.js';
 import CartPage from '../pageObjects/cartPage.js';
+import Footer from '../pageObjects/footer.js';
 
 export const test = base.extend({
   homePage: async ({ page }, use) => {
@@ -47,6 +48,11 @@ export const test = base.extend({
     cartPage: async ({ page, homePage}, use) => {
     const cartPage = new CartPage(page);
     await use(cartPage);
+  },
+
+    footer: async ({ page, homePage}, use) => {
+    const footer = new Footer(page);
+    await use(footer);
   }
 
 });
