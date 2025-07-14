@@ -16,9 +16,10 @@ export const signupLoginPageData = {
     // Data for signup with existing email test
     existingEmail: "marymary.6.82@gmail.com", // Using existing registered email
     signupName: "Test User"
-}
+};
 
 export const subscribtionData = {
   successSubscriptionText: 'You have been successfully subscribed!',
   subscribedemail: 'testemail@example.com'
 };
+
