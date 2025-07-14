@@ -10,10 +10,6 @@ class HomePage {
             homePageText: page.getByText("Full-Fledged practice website for Automation Engineers").first(),
             testCasesLink: page.getByRole('link', { name: 'Test Cases', exact: true }),
             footer: page.locator('footer'),
-            subscriptionText: page.locator('footer').getByText('SUBSCRIPTION'),
-            emailInput: page.locator('input[type="email"]'),
-            subscribeButton: page.locator('button#subscribe'),
-            successAlert: page.locator('.alert-success'),
             getViewProductLink: this.page.getByRole('link', { name: 'View Product' }).first()
         }
     };
@@ -37,20 +33,6 @@ class HomePage {
 
     async scrollToFooter() {
         await this.locators.footer.scrollIntoViewIfNeeded();
-    }
-
-    async verifySubscriptionText() {
-        await this.locators.subscriptionText.waitFor({ state: 'visible' });
-    }
-
-    async subscribeWithEmail(email) {
-        await this.locators.emailInput.fill(email);
-        await this.locators.subscribeButton.click();
-    }
-
-    async verifySuccessMessage() {
-        await this.locators.successAlert.waitFor({ state: 'visible' });
-        await this.page.waitForSelector('.alert-success:has-text("You have been successfully subscribed!")');
     }
 
     async verifyHomePageText() {
