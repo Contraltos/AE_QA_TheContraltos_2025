@@ -13,7 +13,12 @@ export const signupLoginPageData = {
     username: "Mary",
     incorrectEmail: "marymary.6.82@gmail",
     incorrectPassword: "12345",
-    // Data for signup with existing email test
-    existingEmail: "marymary.6.82@gmail.com", // Using existing registered email
+
+    existingEmail: "marymary.6.82@gmail.com", 
     signupName: "Test User"
-}
+};
+
+export const productDetailsData = {
+    expectedFields: ["name", "category", "price", "availability", "condition", "brand"],
+    pageTitle: "Product Details"
+};
