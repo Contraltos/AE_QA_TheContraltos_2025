@@ -1,3 +1,5 @@
+import { expect } from '@playwright/test';
+
 class ProductsPage {
     constructor(page) {
         this.page = page;
@@ -47,16 +49,27 @@ class ProductsPage {
     }
 
     async getCartItems() {
-        // Находим все строки товаров в корзине
         const rows = await this.page.$$('#cart_info_table tbody tr');
         if (!rows) return [];
         return Promise.all(rows.map(async row => {
-            // Получаем текст из нужных ячеек
             const price = await row.$eval('.cart_price p', el => el.textContent.trim()).catch(() => '');
             const quantity = await row.$eval('.cart_quantity button', el => el.textContent.trim()).catch(() => '');
             const total = await row.$eval('.cart_total_price', el => el.textContent.trim()).catch(() => '');
             return { price, quantity, total };
         }));
+    }
+
+    async clickViewProductOfFirstProduct() {
+        const firstProduct = this.locators.getProductCards().first();
+        await firstProduct.locator('a[href*="product_details"]').click();
+    }
+
+    async verifyProductsPageAndCount() {
+        await expect(this.page).toHaveURL(/.*products/);
+        await expect(this.locators.getProductCards().first()).toBeVisible();
+        const count = await this.locators.getProductCards().count();
+        expect(count).toBeGreaterThan(0);
+        return count;
     }
 }
 

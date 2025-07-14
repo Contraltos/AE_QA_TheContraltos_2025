@@ -23,3 +23,8 @@ export const subscribtionData = {
   subscribedemail: 'testemail@example.com'
 };
 
+export const productDetailsData = {
+    expectedFields: ["name", "category", "price", "availability", "condition", "brand"],
+    pageTitle: "Product Details"
+};
+
