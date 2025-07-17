@@ -10,7 +10,7 @@ class ProductsPage {
         getSearchButton: () => this.page.locator('#submit_search'),
         getSearchedProductsTitle:() => this.page.locator('h2.title.text-center'),
         getAnyProduct: () => this.page.locator('.productinfo.text-center'),
-        getProductCards: () => this.page.locator('.product-image-wrapper'),
+        getProductCards: () => this.page.locator('.choose > .nav > li > a'),
         getAddToCartButtons: () => this.page.locator('a.add-to-cart'),
         getContinueShoppingButton: () => this.page.locator('[data-dismiss="modal"]'),
         getViewCartButton:() => this.page.locator('div.modal-content a', { hasText: 'View Cart' }),
