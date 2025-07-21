@@ -1,13 +1,13 @@
-// import { expect } from "@playwright/test";
-// import { test } from "../helpers/fixtures";
+import { test } from "../helpers/fixtures";
+import { expect } from '@playwright/test';
+import { subscribtionData } from "../helpers/testData";  
 
-// test.describe("Verify subscription on home page", () => {
-//     test ("Should subscribe successfully from homepage footer", async ({ homePage }) => {
-
-//         await homePage.scrollToFooter();
-//         await homePage.verifySubscriptionText();
-//         await homePage.subscribeWithEmail('testemail@example.com');
-//         await homePage.verifySuccessMessage();
-//         expect("You have been successfully subscribed!");
-//     });
-// });
+test.describe("TC_010_01 - Verify subscription in Home Page", () => {
+  test("Should subscribe successfully from homepage footer", async ({ homePage, page, footer, header }) => {
+    await homePage.scrollToFooter();
+    await footer.waitForSubscriptionText();
+    await footer.subscribeWithEmail(subscribtionData.subscribedemail);
+    await expect(footer.successSubscriptionAlert).toBeVisible();
+    await expect(footer.successSubscriptionAlert).toHaveText(subscribtionData.successSubscriptionText);
+  });
+});
