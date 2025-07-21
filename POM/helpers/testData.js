@@ -23,8 +23,12 @@ export const subscribtionData = {
   subscribedemail: 'testemail@example.com'
 };
 
-export const productDetailsData = {
-    expectedFields: ["name", "category", "price", "availability", "condition", "brand"],
-    pageTitle: "Product Details"
-};
+export const productDetailsFields = [
+    { name: 'productName', field: 'productName', locatorMethod: 'getProductName' },
+    { name: 'category', field: 'category', locatorMethod: 'getProductCategory' },
+    { name: 'price', field: 'price', locatorMethod: 'getProductPrice' },
+    { name: 'availability', field: 'availability', locatorMethod: 'getProductAvailability' },
+    { name: 'condition', field: 'condition', locatorMethod: 'getProductCondition' },
+    { name: 'brand', field: 'brand', locatorMethod: 'getProductBrand' }
+];
 
