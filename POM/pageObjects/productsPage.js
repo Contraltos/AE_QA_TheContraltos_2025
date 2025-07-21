@@ -9,7 +9,7 @@ class ProductsPage {
         getSearchInput: () => this.page.locator('#search_product'),
         getSearchButton: () => this.page.locator('#submit_search'),
         getSearchedProductsTitle:() => this.page.locator('h2.title.text-center'),
-        getAnyProduct: () => this.page.locator('.productinfo.text-center'),
+        // getAnyProduct: () => this.page.locator('.productinfo.text-center'),
         getProductCards: () => this.page.locator('.choose > .nav > li > a'),
         getAddToCartButtons: () => this.page.locator('a.add-to-cart'),
         getContinueShoppingButton: () => this.page.locator('[data-dismiss="modal"]'),
@@ -31,7 +31,7 @@ class ProductsPage {
     }
 
     async getSearchResultsCount() {
-        return await this.locators.getAnyProduct().count();
+        return await this.locators.getProductCards().count();
     }
 
     async addProductToCartByIndex(index) {
@@ -71,6 +71,9 @@ class ProductsPage {
         expect(count).toBeGreaterThan(0);
         return count;
     }
-}
 
+    async openProductByIndex(i){
+        await this.locators.getProductCards().nth(i).click();
+    }
+}
 export default ProductsPage;

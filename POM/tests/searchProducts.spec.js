@@ -1,7 +1,7 @@
 import { test } from "../helpers/fixtures";
 import { expect } from '@playwright/test';
 
-    test('TC_009_01, TC_020_01 - Verify search field on the product page', async ({ header, productsPage, productDetailsPage }) => {
+    test('TC_009_01, TC_020_01 - Verify search field on the product page', async ({ header, productsPage, productDetailsPage, page}) => {
         await header.clickProductsLink(); 
         await productsPage.searchProduct('dress');
 
@@ -13,11 +13,8 @@ import { expect } from '@playwright/test';
 
         for (let i = 0; i < count; i++) {
             await productsPage.openProductByIndex(i);
-            const name = await productDetailsPage.getTitle();
-            const category = await productDetailsPage.getCategory();
-
-            expect(name.includes('Dress') || category.includes('Dress')).toBeTruthy();
-
+            const category = await productDetailsPage.locators.getProductInfoBlock().textContent();
+            expect(category.toLowerCase()).toContain('dress');
             await page.goBack();
         }
 

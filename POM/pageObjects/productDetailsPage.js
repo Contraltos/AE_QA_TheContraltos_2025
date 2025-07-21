@@ -90,14 +90,9 @@ class ProductDetailsPage {
         await expect(this.locators.getProductInfoBlock()).toBeVisible();
     }
 
-    static verifyRequiredFields(productName, price) {
-        expect(productName?.trim()).toBeTruthy();
-        expect(price?.trim()).toBeTruthy();
-    }
-
-    static logProductDetails(details) {
-        console.log(`Product: ${details.productName} | Price: ${details.price} | Category: ${details.category} | Availability: ${details.availability} | Condition: ${details.condition} | Brand: ${details.brand}`);
-    }
+    // async verifyRelationToSearch() {
+    //     await this.locators.getProductInfoBlock().
+    // }
 }
 
 export default ProductDetailsPage;
