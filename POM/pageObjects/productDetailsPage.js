@@ -90,9 +90,14 @@ class ProductDetailsPage {
         await expect(this.locators.getProductInfoBlock()).toBeVisible();
     }
 
-    // async verifyRelationToSearch() {
-    //     await this.locators.getProductInfoBlock().
-    // }
+    async verifyAllProductDetailsVisible() {
+        await expect(this.locators.getProductName()).toBeVisible();
+        await expect(this.locators.getProductCategory()).toBeVisible();
+        await expect(this.locators.getProductPrice()).toBeVisible();
+        await expect(this.locators.getProductAvailability()).toBeVisible();
+        await expect(this.locators.getProductCondition()).toBeVisible();
+        await expect(this.locators.getProductBrand()).toBeVisible();
+    }
 }
 
 export default ProductDetailsPage;

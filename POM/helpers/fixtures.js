@@ -8,6 +8,7 @@ import ProductsPage from '../pageObjects/productsPage.js';
 import ProductDetailsPage from '../pageObjects/productDetailsPage.js';
 import CartPage from '../pageObjects/cartPage.js';
 import Footer from '../pageObjects/footer.js';
+import CategoriesPage from '../pageObjects/categoriesPage.js';
 
 export const test = base.extend({
   homePage: async ({ page }, use) => {
@@ -53,6 +54,10 @@ export const test = base.extend({
     footer: async ({ page, homePage}, use) => {
     const footer = new Footer(page);
     await use(footer);
-  }
+  },
 
+  categoriesPage: async ({ page, homePage}, use) => {
+    const categoriesPage = new CategoriesPage(page);
+    await use(categoriesPage);
+  }
 });
