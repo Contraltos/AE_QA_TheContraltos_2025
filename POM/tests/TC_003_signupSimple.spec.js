@@ -3,7 +3,7 @@ import { expect } from "@playwright/test";
 import { signupLoginPageData } from "../helpers/testData.js";
 
 test.describe("Simple Signup Test", () => {
-    test("Verify email exists error", async ({ homePage, header }) => {
+    test("TC_003_01_Verify email exists error", async ({ homePage, header }) => {
         await homePage.verifyHomePageVisible();
         const signupLoginPage = await header.clickSignupLoginLink();
         await signupLoginPage.verifyNewUserSignupVisible();
