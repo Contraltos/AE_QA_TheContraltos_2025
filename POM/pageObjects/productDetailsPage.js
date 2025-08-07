@@ -98,15 +98,6 @@ class ProductDetailsPage {
         await expect(this.locators.getProductCondition()).toBeVisible();
         await expect(this.locators.getProductBrand()).toBeVisible();
     }
-
-    static verifyRequiredFields(productName, price) {
-        expect(productName?.trim()).toBeTruthy();
-        expect(price?.trim()).toBeTruthy();
-    }
-
-    static logProductDetails(details) {
-        console.log(`Product: ${details.productName} | Price: ${details.price} | Category: ${details.category} | Availability: ${details.availability} | Condition: ${details.condition} | Brand: ${details.brand}`);
-    }
 }
 
 export default ProductDetailsPage;
