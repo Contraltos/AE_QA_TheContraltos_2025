@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 test.describe('search products test', () => {
 
-    test('verify search field on the product page', async ({ header, productsPage }) => {
+    test('TC_009_01_Verify search field on the product page', async ({ header, productsPage }) => {
         await header.clickProductsLink(); 
         await productsPage.searchProduct('dress');
 

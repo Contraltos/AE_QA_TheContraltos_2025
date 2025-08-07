@@ -3,7 +3,7 @@ import { test } from "../helpers/fixtures";
 
 test.describe('add products to cart test', () => {
 
-    test('verify add products to cart process', async ({ header, productsPage }) => {
+    test('TC_012_01_Verify add products to cart process', async ({ header, productsPage }) => {
         await header.clickProductsLink();
         await productsPage.addProductToCartByIndex(0);
         await productsPage.continueShopping();
