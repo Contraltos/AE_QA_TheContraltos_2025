@@ -7,12 +7,14 @@ class Header {
         this.page = page;
 
         this.locators = {
-        getHomePageLink: () => this.page.getByRole('listitem').filter({ hasText: 'Home' }),
-        getProductsLink: () => this.page.getByText("Products"),
-        getContactUsLink: () => this.page.getByText("Contact us"),
-        getSignupLoginLink: () => this.page.getByRole('link', { name: ' Signup / Login' })
+            getHomePageLink: () => this.page.getByRole('listitem').filter({ hasText: 'Home' }),
+            getProductsLink: () => this.page.getByText("Products"),
+            getContactUsLink: () => this.page.getByText("Contact us"),
+            getSignupLoginLink: () => this.page.getByRole('link', { name: ' Signup / Login' }),
+            getCartLink: () => this.page.getByRole('link', { name: ' Cart' })
         };
-    };
+    }
+
     async clickContactUsLink() {
         await this.locators.getContactUsLink().click();
         return new ContactUsPage(this.page);
@@ -23,7 +25,7 @@ class Header {
         return new ProductsPage(this.page);
     }
 
-      async clickSignupLoginLink() {
+    async clickSignupLoginLink() {
         await this.locators.getSignupLoginLink().click();
         return new SignupLoginPage(this.page);
     }
@@ -31,7 +33,14 @@ class Header {
     async clickHomeLink() {
         await this.locators.getHomePageLink().click();
     }
-}
 
+    async clickCart() {
+        await this.locators.getCartLink().click();
+    }
+
+    async clickCartLink() {
+        await this.locators.getCartLink().click();
+    }
+}
 
 export default Header;
