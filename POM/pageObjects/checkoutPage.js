@@ -3,8 +3,8 @@ class CheckoutPage {
     this.page = page;
     this.locators = {
       proceedToCheckout: page.getByRole('link', { name: 'Proceed To Checkout' }),
-      deliveryAddress: page.getByTestId('delivery_address'),
-      billingAddress: page.getByTestId('billing_address'),
+      deliveryAddress: page.locator('.checkout-information').first(),
+      billingAddress: page.locator('.checkout-information').last(),
       deleteAccount: page.getByRole('link', { name: 'Delete Account' }),
       accountDeletedText: page.getByText('ACCOUNT DELETED!'),
       continueBtn: page.getByRole('link', { name: 'Continue' })
@@ -15,22 +15,48 @@ class CheckoutPage {
     await this.locators.proceedToCheckout.click();
   }
 
+  async getDeliveryAddress() {
+    return await this.locators.deliveryAddress.textContent();
+  }
+
+  async getBillingAddress() {
+    return await this.locators.billingAddress.textContent();
+  }
+
   async verifyAddresses(userData) {
-    const delivery = await this.locators.deliveryAddress.textContent();
-    const billing = await this.locators.billingAddress.textContent();
-    return (
-      delivery.includes(userData.address) &&
-      billing.includes(userData.address) &&
-      delivery.includes(userData.city) &&
-      billing.includes(userData.city) &&
-      delivery.includes(userData.country) &&
-      billing.includes(userData.country)
+    const delivery = await this.getDeliveryAddress();
+    const billing = await this.getBillingAddress();
+    
+    // Check if both addresses contain the expected data
+    const addressComponents = [
+      userData.firstName + ' ' + userData.lastName,
+      userData.company,
+      userData.address,
+      userData.city,
+      userData.state + ' ' + userData.zipcode,
+      userData.country
+    ];
+
+    const deliveryMatches = addressComponents.every(component => 
+      delivery.includes(component)
     );
+    
+    const billingMatches = addressComponents.every(component => 
+      billing.includes(component)
+    );
+
+    return deliveryMatches && billingMatches;
   }
 
   async deleteAccount() {
     await this.locators.deleteAccount.click();
+  }
+
+  async verifyAccountDeleted() {
     await this.locators.accountDeletedText.waitFor({ state: 'visible' });
+  }
+
+  async clickContinueAfterDeletion() {
     await this.locators.continueBtn.click();
   }
 }

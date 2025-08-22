@@ -32,3 +32,20 @@ export const productDetailsFields = [
     { name: 'brand', field: 'brand', locatorMethod: 'getProductBrand' }
 ];
 
+export const registrationData = {
+    name: "John Doe",
+    email: "johndoe.test.tc023@example.com",
+    password: "TestPassword123",
+    title: "Mr",
+    firstName: "John",
+    lastName: "Doe",
+    company: "Test Company",
+    address: "123 Main Street",
+    address2: "Apt 4B",
+    country: "United States",
+    state: "California",
+    city: "Los Angeles",
+    zipcode: "90210",
+    mobile: "+1234567890"
+};
+

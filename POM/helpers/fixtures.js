@@ -9,6 +9,8 @@ import ProductDetailsPage from '../pageObjects/productDetailsPage.js';
 import CartPage from '../pageObjects/cartPage.js';
 import Footer from '../pageObjects/footer.js';
 import CategoriesPage from '../pageObjects/categoriesPage.js';
+import AccountRegistrationPage from '../pageObjects/accountRegistrationPage.js';
+import CheckoutPage from '../pageObjects/checkoutPage.js';
 
 export const test = base.extend({
   homePage: async ({ page }, use) => {
@@ -59,5 +61,15 @@ export const test = base.extend({
   categoriesPage: async ({ page, homePage}, use) => {
     const categoriesPage = new CategoriesPage(page);
     await use(categoriesPage);
+  },
+
+  accountRegistrationPage: async ({ page, homePage}, use) => {
+    const accountRegistrationPage = new AccountRegistrationPage(page);
+    await use(accountRegistrationPage);
+  },
+
+  checkoutPage: async ({ page, homePage}, use) => {
+    const checkoutPage = new CheckoutPage(page);
+    await use(checkoutPage);
   }
 });
