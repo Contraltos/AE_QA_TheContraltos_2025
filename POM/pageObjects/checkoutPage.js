@@ -3,8 +3,8 @@ class CheckoutPage {
     this.page = page;
     this.locators = {
       proceedToCheckout: page.getByRole('link', { name: 'Proceed To Checkout' }),
-      deliveryAddress: page.locator('.checkout-information').first(),
-      billingAddress: page.locator('.checkout-information').last(),
+      deliveryAddress: page.locator('#address_delivery'),
+      billingAddress: page.locator('#address_invoice'),
       deleteAccount: page.getByRole('link', { name: 'Delete Account' }),
       accountDeletedText: page.getByText('ACCOUNT DELETED!'),
       continueBtn: page.getByRole('link', { name: 'Continue' })

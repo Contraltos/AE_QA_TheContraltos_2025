@@ -34,7 +34,7 @@ export const productDetailsFields = [
 
 export const registrationData = {
     name: "John Doe",
-    email: "johndoe.test.tc023@example.com",
+    email: `johndoe.test.tc023.${Date.now()}@example.com`,
     password: "TestPassword123",
     title: "Mr",
     firstName: "John",

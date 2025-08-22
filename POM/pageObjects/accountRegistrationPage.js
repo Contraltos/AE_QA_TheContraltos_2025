@@ -4,23 +4,23 @@ class AccountRegistrationPage {
     this.locators = {
       // Account Information section
       title: {
-        mr: page.getByRole('radio', { name: 'Mr.' }),
-        mrs: page.getByRole('radio', { name: 'Mrs.' })
+        mr: page.locator('input[value="Mr"]'),
+        mrs: page.locator('input[value="Mrs"]')
       },
-      password: page.getByLabel('Password'),
+      password: page.locator('#password'),
       dayOfBirth: page.locator('#days'),
       monthOfBirth: page.locator('#months'),
       yearOfBirth: page.locator('#years'),
-      firstName: page.getByLabel('First name'),
-      lastName: page.getByLabel('Last name'),
-      company: page.getByLabel('Company'),
-      address: page.getByLabel('Address'),
-      address2: page.getByLabel('Address 2'),
+      firstName: page.locator('#first_name'),
+      lastName: page.locator('#last_name'),
+      company: page.locator('#company'),
+      address: page.locator('#address1'),
+      address2: page.locator('#address2'),
       country: page.locator('#country'),
-      state: page.getByLabel('State'),
-      city: page.getByLabel('City'),
-      zipcode: page.getByLabel('Zipcode'),
-      mobile: page.getByLabel('Mobile Number'),
+      state: page.locator('#state'),
+      city: page.locator('#city'),
+      zipcode: page.locator('#zipcode'),
+      mobile: page.locator('#mobile_number'),
       createAccountBtn: page.getByRole('button', { name: 'Create Account' }),
       // Success messages
       accountCreatedText: page.getByText('ACCOUNT CREATED!'),
